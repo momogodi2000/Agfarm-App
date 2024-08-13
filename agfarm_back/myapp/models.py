@@ -12,8 +12,6 @@ class CustomUser(AbstractUser):
         ("logistics_provider", "Logistics Provider"),
     ]
     role = models.CharField(max_length=30, choices=ROLE_CHOICES)
-    phone_number = models.CharField(max_length=12, unique=True, null=True, blank=True)
-    otp = models.CharField(max_length=6, null=True, blank=True)
 
 
 class ContactMessage(models.Model):

@@ -7,24 +7,26 @@ import formImage from "../images/auth.jpeg";
 
 const SignIn = () => {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     console.log(username);
+    console.log(email);
     console.log(password);
     e.preventDefault();
     axios
-      .post("/api/signin/", { username, password })
+      .post("/api/signin/", { username, email, password })
       .then((response) => {
         const role = response.data.role?.toLowerCase();
         console.log(role);
-        console.log("login successfully");
+        console.log("Login successfully");
         if (role === "farmer") navigate("/farmer-dashboard");
         else if (role === "buyer") navigate("/buyer-dashboard");
         else if (role === "admin") navigate("/admin-dashboard");
-        else if (role === "financial_institution")navigate("/financial-dashboard");
+        else if (role === "financial_institution") navigate("/financial-dashboard");
         else if (role === "government_agency") navigate("/government-dashboard");
         else if (role === "logistics_provider") navigate("/logistics-dashboard");
       })
@@ -44,6 +46,12 @@ const SignIn = () => {
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"

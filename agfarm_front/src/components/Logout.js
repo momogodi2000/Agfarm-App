@@ -7,14 +7,9 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      // Retrieve the token from localStorage (or wherever you store it)
-      const token = localStorage.getItem('authToken');
-
-      // Send a request to the backend to logout the user, including the token in the headers
+      // Send a request to the backend to logout the user
       await axios.post('/api/logout/', null, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+        withCredentials: true, // Ensure cookies are sent with the request
       });
 
       // Clear any session data (e.g., tokens) from localStorage or cookies

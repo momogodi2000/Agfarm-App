@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using react-router for navigation
+import { Link } from 'react-router-dom';
 import axios from '../js/axiosConfig';
 import '../css/ForgetPassword.css';
 import logo from '../images/logo/logo.jpeg';
@@ -7,14 +7,14 @@ import formImage from '../images/auth.jpeg';
 
 const ForgotPassword = () => {
   const [step, setStep] = useState(1); // Step 1: Request OTP, Step 2: Reset Password
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
   const [otp, setOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [message, setMessage] = useState('');
 
   const handleRequestOtp = async () => {
     try {
-      const response = await axios.post('/api/forgot-password/', { phone_number: phoneNumber });
+      const response = await axios.post('/api/forgot-password/', { email });
       setMessage(response.data.message);
       setStep(2); // Move to the next step to reset the password
     } catch (error) {
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
   const handleResetPassword = async () => {
     try {
       const response = await axios.put('/api/forgot-password/', {
-        phone_number: phoneNumber,
+        email,
         otp,
         new_password: newPassword,
       });
@@ -46,12 +46,12 @@ const ForgotPassword = () => {
         {message && <p className="message">{message}</p>}
         {step === 1 ? (
           <div className="form-group">
-            <label>Phone Number:</label>
+            <label>Email:</label>
             <input
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="Enter your phone number"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
             />
             <button onClick={handleRequestOtp} className="btn">
               Request OTP

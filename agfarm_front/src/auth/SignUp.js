@@ -23,12 +23,12 @@ const SignUp = () => {
       )
       .then(() => {
         console.log("Created");
-        alert("Registration successful !")
+        alert("Registration successful !");
         navigate("/signin");
       })
       .catch((error) => {
-        console.log(error)
-        setError("Error: "+error);
+        console.log(error);
+        setError("Error: " + (error.response?.data?.message || "An error occurred"));
       });
   };
 
@@ -45,6 +45,12 @@ const SignUp = () => {
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
           type="password"
           placeholder="Password"
           value={password}
@@ -52,7 +58,7 @@ const SignUp = () => {
         />
         <select value={role} onChange={(e) => setRole(e.target.value)}>
           <option value="farmer">Farmer</option>
-          <option value="buyer">buyer</option>
+          <option value="buyer">Buyer</option>
         </select>
         {error && <p className="error">{error}</p>}
         <button type="submit">Sign Up</button>
