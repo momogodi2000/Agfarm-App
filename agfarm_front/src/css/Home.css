@@ -1,0 +1,240 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  a {
+    text-decoration: none;
+    color: #337ab7;
+  }
+  
+  a:hover {
+    color: #23527c;
+  }
+  
+  /* Header Styles */
+  .header1 {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    position: fixed; /* Fix the header to the top */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  
+  .logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
+  
+  .nav {
+    margin-top: 1em;
+  }
+  
+  .nav-link {
+    color: #fff;
+    margin-right: 1em;
+  }
+  
+  .nav-link.btn-primary {
+    background-color: #337ab7;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+  }
+  
+  .nav-link.btn-primary:hover {
+    background-color: #23527c;
+  }
+  
+  /* Hero Section Styles */
+  .hero-section {
+    position: relative;
+    padding: 2em;
+    text-align: center;
+    color: #fff;
+    margin-top: 2em; /* Added margin to ensure content does not overlap with fixed header */
+  }
+  
+  .hero-image {
+    width: 80%;
+    max-width: 1000px; /* Increased max-width for larger screens */
+    height: auto;
+    margin: 0 auto;
+    border-radius: 0.25em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    z-index: -1;
+  }
+  
+  .hero-text {
+    z-index: 1;
+    text-align: center;
+    margin-top: 1em;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5em; /* Adjusted for better scaling */
+    margin-bottom: 0.5em;
+  }
+  
+  .hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  .cta-button {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+    text-decoration: none;
+  }
+  
+  .cta-button:hover {
+    background-color: #23527c;
+  }
+  
+  /* Features Section Styles */
+  .features-section {
+    padding: 2em;
+    text-align: center;
+  }
+  
+  .feature-card {
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    margin: 1em;
+    width: calc(25% - 2em);
+    display: inline-block;
+    border-radius: 0.25em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.25em 0.25em 0 0;
+  }
+  
+  .feature-card h3 {
+    font-size: 1.2em;
+    margin-top: 0.5em;
+  }
+  
+  .feature-card p {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+  /* Case Study Section Styles */
+  .case-study-section {
+    padding: 2em;
+    text-align: center;
+  }
+  
+  .case-study-image {
+    width: 100%;
+    height: auto; /* Adjusted height to maintain aspect ratio */
+    max-height: 300px; /* Set a max-height to avoid overflow */
+    object-fit: cover;
+    border-radius: 0.25em;
+  }
+  
+  .case-study-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .case-study-section li {
+    margin-bottom: 0.5em;
+  }
+  
+  .case-study-section li::before {
+    content: "\2022";
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #337ab7;
+    margin-right: 0.5em;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+    clear: both;
+  }
+  
+  .footer p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Responsive Design */
+  @media only screen and (max-width: 1200px) {
+    .hero-image {
+      width: 80%;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .feature-card {
+      width: calc(50% - 2em);
+    }
+  
+    .hero-image {
+      width: 100%; /* Adjusted width for medium screens */
+    }
+  
+    .hero-text h1 {
+      font-size: 2em;
+    }
+  
+    .hero-text p {
+      font-size: 1.1em;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .feature-card {
+      width: 100%;
+    }
+  
+    .hero-image {
+      width: 100%; /* Adjusted width for small screens */
+    }
+  
+    .hero-text h1 {
+      font-size: 1.5em;
+    }
+  
+    .hero-text p {
+      font-size: 1em;
+    }
+  }

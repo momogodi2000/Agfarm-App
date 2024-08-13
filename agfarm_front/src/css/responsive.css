@@ -1,0 +1,10 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signin-container form,
+    .signup-container form,
+    .forget-password-container form {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  

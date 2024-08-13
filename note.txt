@@ -1,0 +1,5 @@
+Model: Stores the contact message data.
+Serializer: Converts the model instances to/from JSON.
+View: Handles the form submission and stores the data.
+URL Route: Connects the view to a specific API endpoint.
+Frontend: Submits the form data to the Django backend.

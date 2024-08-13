@@ -1,0 +1,187 @@
+/* Global Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Header Styles */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  /* Hero Section Styles */
+  .hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .hero-text.show {
+    opacity: 1;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  /* Features Section Styles */
+  .features-section {
+    padding: 40px 20px;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .features-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .feature-card {
+    display: inline-block;
+    width: 22%;
+    margin: 1%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .feature-card.show {
+    opacity: 1;
+  }
+  
+  .feature-image {
+    border-radius: 5px;
+  }
+  
+  .feature-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+  
+  /* Case Study Section Styles */
+  .case-study-section {
+    padding: 40px 20px;
+    background-color: #e9ecef;
+    text-align: center;
+  }
+  
+  .case-study-section h2 {
+    margin-bottom: 20px;
+  }
+  
+  .case-study-section p, .case-study-section ul {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .case-study-image {
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .case-study-section.show .case-study-image {
+    opacity: 1;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    padding: 20px;
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .hero-image {
+      height: 250px;
+    }
+  
+    .features-section h2, 
+    .case-study-section h2 {
+      font-size: 1.5em;
+    }
+  
+    .feature-card {
+      width: 45%;
+      margin: 2.5%;
+    }
+  
+    .feature-card h3 {
+      font-size: 1em;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .feature-card {
+      width: 90%;
+      margin: 5% 0;
+    }
+  }
