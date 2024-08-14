@@ -9,6 +9,9 @@ from django.contrib.auth.hashers import check_password
 from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 from django.contrib.sessions.models import Session
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 
 User = get_user_model()
