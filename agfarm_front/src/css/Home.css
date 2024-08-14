@@ -1,82 +1,17 @@
-/* Global Styles */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-  }
-  
-  a {
-    text-decoration: none;
-    color: #337ab7;
-  }
-  
-  a:hover {
-    color: #23527c;
-  }
-  
-  /* Header Styles */
-  .header1 {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    position: fixed; /* Fix the header to the top */
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Ensure it stays above other content */
-  }
-  
-  .logo {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-    border-radius: 50%;
-  }
-  
-  .nav {
-    margin-top: 1em;
-  }
-  
-  .nav-link {
-    color: #fff;
-    margin-right: 1em;
-  }
-  
-  .nav-link.btn-primary {
-    background-color: #337ab7;
-    padding: 0.5em 1em;
-    border-radius: 0.25em;
-  }
-  
-  .nav-link.btn-primary:hover {
-    background-color: #23527c;
-  }
-  
-  /* Hero Section Styles */
-  .hero-section {
+/* Home.css */
+
+/* Hero Section */
+.hero-section {
     position: relative;
-    padding: 2em;
     text-align: center;
-    color: #fff;
-    margin-top: 2em; /* Added margin to ensure content does not overlap with fixed header */
+    color: white;
+    overflow: hidden;
   }
   
   .hero-image {
-    width: 80%;
-    max-width: 1000px; /* Increased max-width for larger screens */
+    width: 100%;
     height: auto;
-    margin: 0 auto;
-    border-radius: 0.25em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: block;
   }
   
   .hero-overlay {
@@ -85,156 +20,185 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: transparent;
-    z-index: -1;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
   
   .hero-text {
-    z-index: 1;
-    text-align: center;
-    margin-top: 1em;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
   }
   
   .hero-text h1 {
-    font-size: 2.5em; /* Adjusted for better scaling */
-    margin-bottom: 0.5em;
+    font-size: 2.5em;
+    margin-bottom: 20px;
   }
   
   .hero-text p {
     font-size: 1.2em;
-    margin-bottom: 1em;
+    margin-bottom: 20px;
   }
   
   .cta-button {
-    background-color: #337ab7;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
     color: #fff;
-    padding: 0.5em 1em;
-    border-radius: 0.25em;
+    background-color: #333;
     text-decoration: none;
+    border-radius: 5px;
   }
   
   .cta-button:hover {
-    background-color: #23527c;
+    background-color: #555;
   }
   
-  /* Features Section Styles */
+  /* Features Section */
   .features-section {
-    padding: 2em;
+    padding: 40px 20px;
     text-align: center;
   }
   
+  .features-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
   .feature-card {
-    background-color: #fff;
-    padding: 1em;
-    border: 1px solid #ddd;
-    margin: 1em;
-    width: calc(25% - 2em);
     display: inline-block;
-    border-radius: 0.25em;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
   }
   
   .feature-image {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 0.25em 0.25em 0 0;
+    height: auto;
   }
   
   .feature-card h3 {
-    font-size: 1.2em;
-    margin-top: 0.5em;
+    font-size: 1.5em;
+    margin-top: 10px;
   }
   
   .feature-card p {
-    font-size: 0.9em;
-    color: #666;
+    font-size: 1em;
+    margin-top: 5px;
   }
   
-  /* Case Study Section Styles */
+  /* Case Study Section */
   .case-study-section {
-    padding: 2em;
+    padding: 40px 20px;
     text-align: center;
   }
   
-  .case-study-image {
-    width: 100%;
-    height: auto; /* Adjusted height to maintain aspect ratio */
-    max-height: 300px; /* Set a max-height to avoid overflow */
-    object-fit: cover;
-    border-radius: 0.25em;
+  .case-study-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .case-study-section p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
   }
   
   .case-study-section ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    font-size: 1em;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 600px;
   }
   
-  .case-study-section li {
-    margin-bottom: 0.5em;
+  .case-study-section ul li {
+    margin-bottom: 10px;
   }
   
-  .case-study-section li::before {
-    content: "\2022";
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #337ab7;
-    margin-right: 0.5em;
+  .case-study-image {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    display: block;
+    margin: 20px auto 0;
   }
   
-  /* Footer Styles */
-  .footer {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    clear: both;
-  }
-  
-  .footer p {
-    margin-bottom: 0.5em;
-  }
-  
-  /* Responsive Design */
-  @media only screen and (max-width: 1200px) {
-    .hero-image {
-      width: 80%;
-    }
-  }
-  
-  @media only screen and (max-width: 768px) {
-    .feature-card {
-      width: calc(50% - 2em);
-    }
-  
-    .hero-image {
-      width: 100%; /* Adjusted width for medium screens */
-    }
-  
+  /* Media Queries */
+  @media (max-width: 768px) {
     .hero-text h1 {
       font-size: 2em;
     }
   
     .hero-text p {
-      font-size: 1.1em;
+      font-size: 1em;
+    }
+  
+    .cta-button {
+      font-size: 1em;
+    }
+  
+    .features-section {
+      padding: 30px 15px;
+    }
+  
+    .feature-card {
+      max-width: 100%;
+      margin: 10px 0;
     }
   }
   
-  @media only screen and (max-width: 480px) {
-    .feature-card {
-      width: 100%;
-    }
-  
-    .hero-image {
-      width: 100%; /* Adjusted width for small screens */
-    }
-  
+  @media (max-width: 480px) {
     .hero-text h1 {
       font-size: 1.5em;
     }
   
     .hero-text p {
-      font-size: 1em;
+      font-size: 0.9em;
+    }
+  
+    .cta-button {
+      font-size: 0.9em;
+    }
+  
+    .features-section h2 {
+      font-size: 1.8em;
+    }
+  
+    .feature-card {
+      padding: 15px;
     }
   }
+  
+  @media (max-width: 320px) {
+    .hero-text h1 {
+      font-size: 1.2em;
+    }
+  
+    .hero-text p {
+      font-size: 0.8em;
+    }
+  
+    .cta-button {
+      font-size: 0.8em;
+    }
+  
+    .features-section h2 {
+      font-size: 1.5em;
+    }
+  
+    .feature-card {
+      padding: 10px;
+    }
+  }
+  
