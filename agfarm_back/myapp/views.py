@@ -10,6 +10,7 @@ from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 from django.contrib.sessions.models import Session
 
+
 User = get_user_model()
 
 
@@ -51,17 +52,20 @@ class LogoutView(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        logout(request)
+        try:
+            # Log out the user
+            logout(request)
 
-        # Terminate the session
-        if hasattr(request, 'session'):
-            request.session.flush()  # Delete the session data
-            session_key = request.session.session_key
-            if session_key:
-                Session.objects.filter(session_key=session_key).delete()
+            # Terminate the session
+            if hasattr(request, 'session'):
+                request.session.flush()  # Delete the session data
+                session_key = request.session.session_key
+                if session_key:
+                    Session.objects.filter(session_key=session_key).delete()
 
-        # Return the response indicating the user is logged out
-        return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response({'error': 'An error occurred during logout.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class ForgotPasswordView(generics.GenericAPIView):

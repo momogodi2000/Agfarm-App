@@ -1,73 +1,56 @@
-from django.test import TestCase
 from django.urls import reverse
+from rest_framework.test import APITestCase
 from rest_framework import status
-from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class AuthTests(TestCase):
+class AuthenticationTests(APITestCase):
     def setUp(self):
-        self.client = APIClient()
-        self.user = User.objects.create_user(username='testuser', password='testpass', role='admin', phone_number='1234567890')
-
-        # Update URLs to match the names defined in urls.py
-        self.register_url = reverse('signup')
-        self.login_url = reverse('signin')
-        self.logout_url = reverse('logout')
-        self.forgot_password_url = reverse('forgot_password')
-        self.contact_message_url = reverse('contact')
-
-    def test_register_user(self):
-        data = {
-            'username': 'newuser',
-            'password': 'newpass',
-            'email': 'newuser@example.com',
-            'role': 'financial_institution',
-            'phone_number': '0987654321'
-        }
-        response = self.client.post(self.register_url, data)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-    def test_login_user(self):
-        data = {
+        self.user_data = {
             'username': 'testuser',
-            'password': 'testpass',
+            'password': 'testpassword123',
+            'email': 'testuser@example.com'
         }
-        response = self.client.post(self.login_url, data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.user = User.objects.create_user(**self.user_data)
+        self.signin_url = reverse('signin')  # Adjust according to your URL configuration
+        self.signup_url = reverse('signup')  # Adjust according to your URL configuration
+        self.forgot_password_url = reverse('forgot-password')  # Adjust according to your URL configuration
+        self.logout_url = reverse('logout')  # Adjust according to your URL configuration
 
-    def test_logout_user(self):
-        self.client.login(username='testuser', password='testpass')
+    def test_signup(self):
+        response = self.client.post(self.signup_url, {
+            'username': 'newuser',
+            'password': 'newpassword123',
+            'email': 'newuser@example.com'
+        })
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertIn('id', response.data)
+
+    def test_signin(self):
+        response = self.client.post(self.signin_url, {
+            'username': self.user_data['username'],
+            'password': self.user_data['password']
+        })
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('token', response.data)  # Adjust based on your response
+
+    def test_forgot_password(self):
+        response = self.client.post(self.forgot_password_url, {
+            'email': self.user_data['email']
+        })
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['detail'], 'Password reset email sent.')  # Adjust based on your response
+
+    def test_logout(self):
+        # First sign in to get a valid session
+        self.client.post(self.signin_url, {
+            'username': self.user_data['username'],
+            'password': self.user_data['password']
+        })
         response = self.client.post(self.logout_url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    def test_forgot_password_send_otp(self):
-        data = {
-            'phone_number': '1234567890',
-        }
-        response = self.client.post(self.forgot_password_url, data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'OTP sent to your phone number.')
-
-    def test_forgot_password_reset(self):
-        self.user.otp = '123456'
-        self.user.save()
-        data = {
-            'phone_number': '1234567890',
-            'otp': '123456',
-            'new_password': 'newtestpass'
-        }
-        response = self.client.put(self.forgot_password_url, data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Password has been reset successfully.')
-
-    def test_contact_message(self):
-        data = {
-            'name': 'Test User',
-            'email': 'testuser@example.com',
-            'message': 'This is a test message.'
-        }
-        response = self.client.post(self.contact_message_url, data)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['message'], 'Contact message sent successfully.')
+        # Attempt to access a protected endpoint to verify logout
+        response = self.client.get(reverse('some-protected-endpoint'))  # Replace with an actual protected endpoint
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)

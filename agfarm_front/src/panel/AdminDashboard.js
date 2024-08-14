@@ -36,9 +36,8 @@ const AdminDashboard = () => {
             <li className={activeMenu === 'settings' ? 'active' : ''} onClick={() => handleMenuClick('settings')}>
               <FaCog /> <span>Settings</span>
             </li>
-            <li onClick={handleMenuClick}>
+            <li className="logout" onClick={() => handleMenuClick('logout')}>
               <FaSignOutAlt /> <span>Logout</span>
-              <Logout />
             </li>
           </ul>
         </nav>
@@ -55,6 +54,7 @@ const AdminDashboard = () => {
               {activeMenu === 'users' && 'Manage and view user accounts.'}
               {activeMenu === 'tasks' && 'Assign and track tasks.'}
               {activeMenu === 'settings' && 'Adjust system settings.'}
+              {activeMenu === 'logout' && <Logout />}
             </p>
           </section>
         </main>

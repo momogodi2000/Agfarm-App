@@ -63,9 +63,8 @@ const BuyerDashboard = () => {
             <li className={activeMenu === 'settings' ? 'active' : ''} onClick={() => handleMenuClick('settings')}>
               <FaCog /> <span>Settings</span>
             </li>
-            <li onClick={() => handleMenuClick('logout')}>
+            <li className="logout" onClick={() => handleMenuClick('logout')}>
               <FaSignOutAlt /> <span>Logout</span>
-              <Logout />
             </li>
           </ul>
         </nav>
@@ -84,6 +83,7 @@ const BuyerDashboard = () => {
               {activeMenu === 'profile' && 'View and update your profile information.'}
               {activeMenu === 'chat' && 'Chat with the logistics.'}
               {activeMenu === 'settings' && 'Adjust your account settings and preferences.'}
+              {activeMenu === 'logout' && <Logout />}
             </p>
           </section>
         </main>

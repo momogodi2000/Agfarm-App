@@ -13,13 +13,13 @@ const Logout = () => {
       });
 
       // Clear any session data (e.g., tokens) from localStorage or cookies
-      localStorage.removeItem('authToken');
+     localStorage.removeItem('authToken');
 
       // Redirect the user to the sign-in page
       navigate('/signin');
     } catch (error) {
       console.error('Logout failed:', error);
-      // Handle errors here (e.g., show a notification)
+      // Optionally, show a notification or message to the user
     }
   };
 
